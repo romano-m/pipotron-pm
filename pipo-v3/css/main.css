@@ -1,0 +1,48 @@
+.header {
+	margin: 0;
+    padding: 35px 0;
+    color:#fff;
+    text-shadow: none;
+    background-color: #5ABBA5;
+}
+
+.header h1 {
+	font-size: 50px;
+}
+
+.main .container .jumbotron {
+	margin-top: 30px;
+    margin-bottom: 30px;
+}
+.text-part:hover {
+	color: #5ABBA5;
+	font-style: italic;
+	cursor:pointer;
+}
+
+.btn.btn-lg.btn-pipotron {
+	outline:0px;
+	color: #fff;
+    text-shadow: none;
+	background-color: #5ABBA5;
+    background-image: -moz-linear-gradient(top, #5ABBA5, #5ABBA5);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#5ABBA5), to(#5ABBA5));
+    background-image: -webkit-linear-gradient(top, #5ABBA5, #5ABBA5);
+    background-image: -o-linear-gradient(top, #5ABBA5, #5ABBA5);
+    background-image: linear-gradient(to bottom, #5ABBA5, #5ABBA5);
+    background-repeat: repeat-x;
+    border: 1px solid #5ABBA5;
+}
+
+.btn.btn-lg.btn-pipotron:hover {
+	color: #fff;
+    text-shadow: none;
+	background-color: #4F9E8C;
+    background-image: -moz-linear-gradient(top, #4F9E8C, #4F9E8C);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#4F9E8C), to(#4F9E8C));
+    background-image: -webkit-linear-gradient(top, #4F9E8C, #4F9E8C);
+    background-image: -o-linear-gradient(top, #4F9E8C, #4F9E8C);
+    background-image: linear-gradient(to bottom, #4F9E8C, #4F9E8C);
+    background-repeat: repeat-x;
+    border: 1px solid #4F9E8C;
+}

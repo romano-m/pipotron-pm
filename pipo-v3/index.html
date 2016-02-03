@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<title>Thigatron</title>
+	<link href="css/bootstrap.css" rel="stylesheet" />
+	<link href="css/bootstrap-responsive.css" rel="stylesheet" />
+	<link href="css/main.css" rel="stylesheet" />
+	<link href='https://fonts.googleapis.com/css?family=Roboto:500,300,700,400' rel='stylesheet' type='text/css'>
+	<script src="js/shared/angular.min.js"></script>
+
+</head>
+
+<body ng-app="PipotronApp">
+	<header class="header">
+		<div class="container">
+			<h1>ThigaTron</h1>
+		</div>
+	</header>
+	<main class="main">
+		<div class="container" ng-controller="MainController" ng-init="selectPipo()">
+			<div class="jumbotron">
+				<div class="content">
+					<h1> {{ title }} </h1>
+					<p class="lead">
+						<span ng-repeat="pipo in pipos" ng-click="selectPipoN(pipo.id)" class="text-part">
+							{{ pipo.current }}
+						</span>
+					</p>
+		      		<button class="btn btn-lg btn-pipotron btn-large" ng-click="selectPipo()" role="button">Pipote moi, Thiguy !</button>
+				</div>
+			</div>
+			<footer class="footer">
+				<h3>Vous n'y comprenez rien ?</h3>
+				<p>Consultez notre <a href="http://blog.thiga.fr/glossaire/">Glossaire</a> !</p>
+				<p>Partager avec un collègue</p>
+			</footer>
+		</div>
+	</main>
+
+
+
+    <!-- Modules -->
+    <script src="js/app.js"></script>
+
+    <!-- Controllers -->
+    <script src="js/controllers/MainController.js"></script>
+</body>
+
+</html>
