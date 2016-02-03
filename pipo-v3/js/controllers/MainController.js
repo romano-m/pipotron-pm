@@ -62,6 +62,36 @@ app.controller('MainController', ['$scope', function($scope) {
 			};
 		};
 	};
+	// STARTED WORK ON HASHTAGPROCESSOR
+
+	// $scope.selectPipo = function() {
+	// 	for (var i=1; i < 10; i++) {
+	// 		$scope.selectPipoN(i);
+	// 		$scope.hashtagprocessor(i,i);
+	// 	}
+	// };
+	// $scope.selectPipoN = function(idpipo) {
+	// 	for (var i = 0; i < $scope.pipos.length; i++) {
+	// 		var pipo = $scope.pipos[i];
+	// 		if (pipo.id == idpipo) {
+	// 			var j = Math.floor(Math.random() * pipo.content.length);
+	// 			$scope.pipos[i].current = $scope.hashtagprocessor(pipo.content[j]);
+	// 		};
+	// 	};
+	// };
+	// $scope.hashtagprocessor = function(currentpipo) {
+	// 	if (currentpipo.charAt(currentpipo.length-1) == '#') {
+	// 		currentpipo = currentpipo.substring(0, currentpipo.length-1) ;
+	// 		aux = 'aeiouyhéè' ;
+	// 		boule = false ;
+	// 			for (j = 0 ; j<aux.length ; j++) {
+	// 				if (chaine5.charAt(0) == aux.charAt(j)) {boule = true} ;} ;
+	// 			if (boule)  {liaison = "'"} else {liaison = "e "} ;
+	// }
+	// else
+	// liaison =' ' ;
+	// }
+
 	// $scope.mouseEnter = function(idpipo) {
 
 	// };
