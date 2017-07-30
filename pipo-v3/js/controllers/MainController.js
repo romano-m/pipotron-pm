@@ -1,7 +1,6 @@
 app.controller('MainController', ['$scope', 'piposervice', function($scope, piposervice) {
 	$scope.title = 'Le Pipotron du Product Management';
 	$scope.phrase = "";
-
 	$scope.pipos = [
 		{
 			id: 1,
@@ -63,26 +62,41 @@ app.controller('MainController', ['$scope', 'piposervice', function($scope, pipo
 	});
 
 	$scope.selectPipo = function() {
+		$scope.phrase = "";
 		for (var i=1; i < 10; i++) {
 			$scope.selectPipoN(i);
-			// if (i>1) {
-			// 	$scope.hashtagprocessor(i);	
-			// }
+			$scope.phrase = $scope.phrase + " " + $scope.pipos[i-1].current;
 		}
+		console.log("Avant processHashtags : " + $scope.phrase);
+		$scope.processHashtags($scope.phrase);
+		console.log("Après processHashtags : " + $scope.phrase);
+
 	};
 
-	// $scope.hashtagprocessor = function(currentpipoid,currentpipo) {
-	// 	if (currentpipo.charAt(currentpipo.length-1) == '#') {
-	// 		currentpipo = currentpipo.substring(0, currentpipo.length-1) ;
-	// 		aux = 'aeiouyhéè' ;
-	// 		boule = false ;
-	// 			for (j = 0 ; j<aux.length ; j++) {
-	// 				if ($scope.pipos[currentpipoid+1].current.charAt(0) == aux.charAt(j)) {boule = true} ;} ;
-	// 			if (boule)  {liaison = "'"} else {liaison = "e "} ;
-	// 	}
-	// 	else
-	// 	liaison =' ' ;
-	// 	}
+	 $scope.processHashtags = function(phrase) {
+		for (i=0 ; i<phrase.length; i++) {
+			if (phrase.charAt(i) == '#') {
+				console.log("hashtag : " + phrase.charAt(i));
+				console.log("i-1 : " + phrase.charAt(i-1));
+				console.log("i+1 : " + phrase.charAt(i+2));
+				aux = "aeiouyhéè";
+				boule = false;
+				liaison = "";
+					for (j = 0 ; j<aux.length ; j++) {
+						if (phrase.charAt(i+2) == aux.charAt(j)) {
+							boule = true;
+						}
+					}
+					if (boule) {
+						liaison = "'";
+					}
+						else {
+							liaison = "e ";
+						}
+				phrase = phrase.substring(0, i) + liaison + phrase.substring(i+2, phrase.length);
+			}
+		}
+	}
 
 
 		$scope.selectPipoN = function(idpipo) {
@@ -91,13 +105,10 @@ app.controller('MainController', ['$scope', 'piposervice', function($scope, pipo
 			if (pipo.id == idpipo) {
 				var j = Math.floor(Math.random() * pipo.content.length);
 				$scope.pipos[i].current = pipo.content[j];
-				// pipo.content[j] = $scope.hashtagprocessor(i,pipo.content[j])
+				console.log("pipo added : " + $scope.pipos[i].current)
 			};
 		};
 	};
-
-
-	// STARTED WORK ON HASHTAGPROCESSOR
 
 
 }])
