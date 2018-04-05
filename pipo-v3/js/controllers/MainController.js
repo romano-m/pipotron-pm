@@ -5,47 +5,56 @@ app.controller('MainController', ['$scope', 'piposervice', function($scope, pipo
 		{
 			id: 1,
 			'content': [],
-			'current': ""
+			'current': "",
+			'currentHashtag': false
 		},
 		{
 			id: 2,
 			'content': [],
-			'current': ""
+			'current': "",
+			'currentHashtag': false
 		},
 		{
 			id: 3,
 			'content': [],
-			'current': ""
+			'current': "",
+			'currentHashtag': false
 		},
 		{
 			id: 4,
 			'content': [],
-			'current': ""
+			'current': "",
+			'currentHashtag': false
 		},
 		{
 			id: 5,
 			'content': [],
-			'current': ""
+			'current': "",
+			'currentHashtag': false
 		},
 		{
 			id: 6,
 			'content': [],
-			'current': ""
+			'current': "",
+			'currentHashtag': false
 		},
 		{
 			id: 7,
 			'content': [],
-			'current': ""
+			'current': "",
+			'currentHashtag': false
 		},
 		{
 			id: 8,
 			'content': [],
-			'current': ""
+			'current': "",
+			'currentHashtag': false
 		},
 		{
 			id: 9,
 			'content': [],
-			'current': ""
+			'current': "",
+			'currentHashtag': false
 		}
 	]
 
@@ -58,30 +67,30 @@ app.controller('MainController', ['$scope', 'piposervice', function($scope, pipo
 				}
 			}
 		}
-		$scope.selectPipo();
+		$scope.selectPipo(true);
 	});
 
-	$scope.selectPipo = function() {
+	$scope.selectPipo = function(launch) {
 		$scope.phrase = "";
 		for (var i=1; i < 10; i++) {
-			$scope.selectPipoN(i);
+			$scope.selectPipoN(i, launch);
 			$scope.phrase = $scope.phrase + " " + $scope.pipos[i-1].current;
 		}
-		console.log("Avant processHashtags : " + $scope.phrase);
+		// console.log("Avant processHashtags : " + $scope.phrase);
 		$scope.processHashtags($scope.phrase);
-		console.log("Après processHashtags : " + $scope.phrase);
+		// console.log("Après processHashtags : " + $scope.phrase);
 
 	};
 
-	 $scope.processHashtags = function(phrase) {
-		for (i=0 ; i<phrase.length; i++) {
+	$scope.processHashtags = function(phrase) {
+		for (var i=0 ; i<phrase.length; i++) {
 			if (phrase.charAt(i) == '#') {
 				console.log("hashtag : " + phrase.charAt(i));
 				console.log("i-1 : " + phrase.charAt(i-1));
 				console.log("i+1 : " + phrase.charAt(i+2));
-				aux = "aeiouyhéè";
-				boule = false;
-				liaison = "";
+				var aux = "aeiouyhéè";
+				var boule = false;
+				var liaison = "";
 					for (j = 0 ; j<aux.length ; j++) {
 						if (phrase.charAt(i+2) == aux.charAt(j)) {
 							boule = true;
@@ -93,22 +102,78 @@ app.controller('MainController', ['$scope', 'piposervice', function($scope, pipo
 						else {
 							liaison = "e ";
 						}
-				phrase = phrase.substring(0, i) + liaison + phrase.substring(i+2, phrase.length);
+				$scope.phrase = phrase.substring(0, i) + liaison + phrase.substring(i+2, phrase.length);
 			}
 		}
 	}
 
 
-		$scope.selectPipoN = function(idpipo) {
+	$scope.selectPipoN = function(idpipo, launch) {
 		for (var i = 0; i < $scope.pipos.length; i++) {
 			var pipo = $scope.pipos[i];
 			if (pipo.id == idpipo) {
 				var j = Math.floor(Math.random() * pipo.content.length);
 				$scope.pipos[i].current = pipo.content[j];
-				console.log("pipo added : " + $scope.pipos[i].current)
+				console.log("Pipo added : " + $scope.pipos[i].current);
+				if (i>1) {
+					$scope.pipos[i-1].current = $scope.refreshPipo(i-1);
+					console.log("Pipo selected after refresh : " + $scope.pipos[i-1].current);
+				}
+				if (!launch) {
+					$scope.pipos[i+1].current = $scope.refreshPipo(i+1);
+					$scope.pipos[i].current = $scope.refreshPipo(i);
+				}
 			};
 		};
 	};
+
+	$scope.refreshPipo = function (idpipo) {
+		var pipo = $scope.pipos[idpipo].current;
+		var hashtag = $scope.pipos[idpipo].currentHashtag;
+		if ($scope.checkHashtag(idpipo)) {
+			$scope.pipos[idpipo].current = pipo.substring(0,pipo.length-1) + $scope.replaceHashtag(idpipo);
+			console.log("Pipo refreshed : " + $scope.pipos[idpipo].current);
+		}
+		else if ((idpipo == 3) && $scope.checkHashtag(idpipo)) {
+			$scope.pipos[idpipo].current = pipo.substring(0,pipo.length-1) + $scope.replaceHashtag(idpipo);
+			console.log("Pipo refreshed : " + $scope.pipos[idpipo].current);
+		}
+		else {
+			console.log("Pipo not refreshed : " + $scope.pipos[idpipo].current);
+		}
+		return $scope.pipos[idpipo].current;
+	}
+
+	$scope.checkHashtag = function(idpipo) {
+		var pipo = $scope.pipos[idpipo].current;
+		if (pipo.charAt(pipo.length-1) == "#") {
+			$scope.pipos[idpipo].currentHashtag = true;
+			return true;
+		}
+		else {
+			$scope.pipos[idpipo].currentHashtag = false;
+			return false;
+		}
+	}
+
+	$scope.replaceHashtag = function(idpipo) {
+		var aux = "aeiouyhéè";
+		var boule = false;
+		var liaison = "";
+		for (i = 0 ; i<aux.length ; i++) {
+				if ($scope.pipos[idpipo+1].current[0] == aux.charAt(i)) {
+					boule = true;
+					break;
+				}
+			}
+			if (boule) {
+				liaison = "'";
+			}
+				else {
+					liaison = "e";
+				}
+		return liaison;
+	}
 
 
 }])
