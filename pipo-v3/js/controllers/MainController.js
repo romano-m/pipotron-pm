@@ -6,54 +6,63 @@ app.controller('MainController', ['$scope', 'piposervice', function($scope, pipo
 			id: 1,
 			'content': [],
 			'current': "",
+			'currentId': "",
 			'currentHashtag': false
 		},
 		{
 			id: 2,
 			'content': [],
 			'current': "",
+			'currentId': "",
 			'currentHashtag': false
 		},
 		{
 			id: 3,
 			'content': [],
 			'current': "",
+			'currentId': "",
 			'currentHashtag': false
 		},
 		{
 			id: 4,
 			'content': [],
 			'current': "",
+			'currentId': "",
 			'currentHashtag': false
 		},
 		{
 			id: 5,
 			'content': [],
 			'current': "",
+			'currentId': "",
 			'currentHashtag': false
 		},
 		{
 			id: 6,
 			'content': [],
 			'current': "",
+			'currentId': "",
 			'currentHashtag': false
 		},
 		{
 			id: 7,
 			'content': [],
 			'current': "",
+			'currentId': "",
 			'currentHashtag': false
 		},
 		{
 			id: 8,
 			'content': [],
 			'current': "",
+			'currentId': "",
 			'currentHashtag': false
 		},
 		{
 			id: 9,
 			'content': [],
 			'current': "",
+			'currentId': "",
 			'currentHashtag': false
 		}
 	]
@@ -114,6 +123,7 @@ app.controller('MainController', ['$scope', 'piposervice', function($scope, pipo
 			if (pipo.id == idpipo) {
 				var j = Math.floor(Math.random() * pipo.content.length);
 				$scope.pipos[i].current = pipo.content[j];
+				$scope.pipos[i].currentId = j;
 				console.log("Pipo added : " + $scope.pipos[i].current);
 				if (i>1) {
 					$scope.pipos[i-1].current = $scope.refreshPipo(i-1);
@@ -128,7 +138,7 @@ app.controller('MainController', ['$scope', 'piposervice', function($scope, pipo
 	};
 
 	$scope.refreshPipo = function (idpipo) {
-		var pipo = $scope.pipos[idpipo].current;
+		var pipo = $scope.pipos[idpipo].content[$scope.pipos[idpipo].currentId];
 		var hashtag = $scope.pipos[idpipo].currentHashtag;
 		if ($scope.checkHashtag(idpipo)) {
 			$scope.pipos[idpipo].current = pipo.substring(0,pipo.length-1) + $scope.replaceHashtag(idpipo);
@@ -145,13 +155,13 @@ app.controller('MainController', ['$scope', 'piposervice', function($scope, pipo
 	}
 
 	$scope.checkHashtag = function(idpipo) {
-		var pipo = $scope.pipos[idpipo].current;
+		var pipo = $scope.pipos[idpipo].content[$scope.pipos[idpipo].currentId];
 		if (pipo.charAt(pipo.length-1) == "#") {
 			$scope.pipos[idpipo].currentHashtag = true;
 			return true;
 		}
 		else {
-			$scope.pipos[idpipo].currentHashtag = false;
+			//$scope.pipos[idpipo].currentHashtag = false;
 			return false;
 		}
 	}
