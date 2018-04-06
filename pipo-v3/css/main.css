@@ -4,11 +4,23 @@
     color:#fff;
     text-shadow: none;
     background: linear-gradient(to left, #24a27c, #39D3A4);
+    text-align: center;
 }
 
 .header h1 {
 	font-size: 50px;
     font-family: "Montserrat","Helvetica Neue", "Helvetica", "Arial", "sans-serif";
+    text-align: center;
+}
+
+h3 {
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: center;
+    text-align: center;
 }
 
 .main .container .jumbotron {
@@ -19,6 +31,18 @@
 	color: #5ABBA5;
 	font-style: italic;
 	cursor:pointer;
+}
+
+.lead {
+    text-align: center;
+    font-size: 32px;
+    line-height: 1.6;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
 }
 
 .btn.btn-lg.btn-pipotron {

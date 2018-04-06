@@ -1,5 +1,5 @@
 app.controller('MainController', ['$scope', 'piposervice', function($scope, piposervice) {
-	$scope.title = 'Cadeau, une phrase pour faire le malin :';
+	$scope.title = 'Cadeau, une phrase pour faire le malin en réunion :';
 	$scope.phrase = "";
 	$scope.pipos = [
 		{

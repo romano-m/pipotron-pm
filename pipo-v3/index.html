@@ -22,22 +22,27 @@
 		<div class="container" ng-controller="MainController">
 			<div class="jumbotron">
 				<div class="content">
-					<h1> {{ title }} </h1>
-					<p class="lead">
+					<h3> {{ title }} </h3>
+					<p class="lead">"
 						<span ng-repeat="pipo in pipos" ng-click="selectPipoN(pipo.id, false)" class="text-part">
 							{{ pipo.current }}
 						</span>
+						"
 					</p>
-		      		<button class="btn btn-lg btn-pipotron btn-large" ng-click="selectPipo(false)" role="button">Envoie moi du pipeau !</button>
-		      		<a class="twitter-share-button btn btn-lg btn-twitter btn-large"
-					href="https://twitter.com/intent/tweet?text={{phrase}}&via=innothiga">
-				Je Tweet
-				</a>
+				<div class="action-buttons">
+					<span>
+		      		<button class="btn btn-lg btn-pipotron btn-large" ng-click="selectPipo(false)" role="button">Encore du pipeau !</button>
+		      		<a class="twitter-share-button btn btn-lg btn-twitter btn-large" href="https://twitter.com/intent/tweet?text={{phrase}}&via=innothiga"  target="_blank">Je Tweet</a>
+		      		</span>
+				</div>
 				</div>
 			</div>
-			<footer class="footer">
+			<footer class="footer-content">
+				<div >
 				<h3>Vous n'y comprenez rien ?</h3>
-				<p>Consultez notre <a href="http://blog.thiga.fr/glossaire/">Glossaire</a> !</p>
+				<a href="http://blog.thiga.fr/glossaire/" target="_blank"><img src="https://media.giphy.com/media/k61nOBRRBMxva/giphy.gif"/></a>
+				<h4>Consultez notre <a href="http://blog.thiga.fr/glossaire/" target="_blank">Glossaire</a> !</h4>
+				</div>
 			</footer>
 		</div>
 	</main>
