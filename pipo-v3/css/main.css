@@ -25,9 +25,13 @@
 	outline:0px;
 	color: #fff;
     text-shadow: none;
-	background-image: linear-gradient(to left, #24a27c, #39D3A4);
+    background-image: -moz-linear-gradient(top, #24a27c, #39D3A4);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#24a27c), to(#39D3A4));
+    background-image: -webkit-linear-gradient(top, #24a27c, #39D3A4);
+    background-image: -o-linear-gradient(top, #24a27c, #39D3A4);
+    background-image: linear-gradient(to bottom, #24a27c, #39D3A4);
     background-repeat: repeat-x;
-    border: 1px solid #5ABBA5;
+    border: 1px solid #39D3A4;
 }
 
 .btn.btn-lg.btn-pipotron:hover {
@@ -41,4 +45,35 @@
     background-image: linear-gradient(to bottom, #4F9E8C, #4F9E8C);
     background-repeat: repeat-x;
     border: 1px solid #4F9E8C;
+}
+
+.twitter-share-button {
+    color:#f7f7f7;
+}
+
+.btn.btn-lg.btn-twitter {
+    outline:0px;
+    color: #f7f7f7;
+    text-shadow: none;
+    background-color: #55ACEE;
+    background-image: -moz-linear-gradient(top, #55ACEE, #55ACEE);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#55ACEE), to(#55ACEE));
+    background-image: -webkit-linear-gradient(top, #55ACEE, #55ACEE);
+    background-image: -o-linear-gradient(top, #55ACEE, #55ACEE);
+    background-image: linear-gradient(to bottom, #55ACEE, #55ACEE);
+    background-repeat: repeat-x;
+    border: 1px solid #55ACEE;
+}
+
+.btn.btn-lg.btn-twitter:hover {
+    color: #f7f7f7;
+    text-shadow: none;
+    background-color: #4EA0DB;
+    background-image: -moz-linear-gradient(top, #4EA0DB, #4EA0DB);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#4EA0DB), to(#4EA0DB));
+    background-image: -webkit-linear-gradient(top, #4EA0DB, #4EA0DB);
+    background-image: -o-linear-gradient(top, #4EA0DB, #4EA0DB);
+    background-image: linear-gradient(to bottom, #4EA0DB, #4EA0DB);
+    background-repeat: repeat-x;
+    border: 1px solid #4EA0DB;
 }
