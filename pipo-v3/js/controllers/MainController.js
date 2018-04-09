@@ -85,37 +85,9 @@ app.controller('MainController', ['$scope', 'piposervice', function($scope, pipo
 			$scope.selectPipoN(i, launch);
 			$scope.phrase = $scope.phrase + " " + $scope.pipos[i-1].current;
 		}
-		// console.log("Avant processHashtags : " + $scope.phrase);
-		$scope.processHashtags($scope.phrase);
-		// console.log("Après processHashtags : " + $scope.phrase);
+		console.log($scope.phrase);
 
 	};
-
-	$scope.processHashtags = function(phrase) {
-		for (var i=0 ; i<phrase.length; i++) {
-			if (phrase.charAt(i) == '#') {
-				console.log("hashtag : " + phrase.charAt(i));
-				console.log("i-1 : " + phrase.charAt(i-1));
-				console.log("i+1 : " + phrase.charAt(i+2));
-				var aux = "aeiouyhéè";
-				var boule = false;
-				var liaison = "";
-					for (j = 0 ; j<aux.length ; j++) {
-						if (phrase.charAt(i+2) == aux.charAt(j)) {
-							boule = true;
-						}
-					}
-					if (boule) {
-						liaison = "'";
-					}
-						else {
-							liaison = "e ";
-						}
-				$scope.phrase = phrase.substring(0, i) + liaison + phrase.substring(i+2, phrase.length);
-			}
-		}
-	}
-
 
 	$scope.selectPipoN = function(idpipo, launch) {
 		for (var i = 0; i < $scope.pipos.length; i++) {
@@ -130,7 +102,6 @@ app.controller('MainController', ['$scope', 'piposervice', function($scope, pipo
 					console.log("Pipo selected after refresh : " + $scope.pipos[i-1].current);
 				}
 				if (!launch) {
-					$scope.pipos[i+1].current = $scope.refreshPipo(i+1);
 					$scope.pipos[i].current = $scope.refreshPipo(i);
 				}
 			};
@@ -161,7 +132,6 @@ app.controller('MainController', ['$scope', 'piposervice', function($scope, pipo
 			return true;
 		}
 		else {
-			//$scope.pipos[idpipo].currentHashtag = false;
 			return false;
 		}
 	}
